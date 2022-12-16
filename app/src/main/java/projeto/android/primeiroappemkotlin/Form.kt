@@ -2,9 +2,8 @@ package projeto.android.primeiroappemkotlin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
-import projeto.android.primeiroappemkotlin.MainActivity.Companion.CHAVE_PRODUTO
 import projeto.android.primeiroappemkotlin.ROOM.AppDataBase
+import projeto.android.primeiroappemkotlin.constante.CHAVE_PRODUTO_ID
 import projeto.android.primeiroappemkotlin.databinding.ActivityFormBinding
 import projeto.android.primeiroappemkotlin.dialog.FormularioImagemDialog
 import projeto.android.primeiroappemkotlin.recyclerView.Produt
@@ -32,7 +31,7 @@ class Form : AppCompatActivity() {
                     binding.image.tentaCarregarImagem(url)
                 }
         }
-        intent.getParcelableExtra<Produt>(CHAVE_PRODUTO).let { produtoCarregado ->
+        intent.getParcelableExtra<Produt>(CHAVE_PRODUTO_ID).let { produtoCarregado ->
             if (produtoCarregado != null) {
                 idProduto = produtoCarregado.id
                 url = produtoCarregado.imagem

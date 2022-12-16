@@ -1,24 +1,20 @@
 package projeto.android.primeiroappemkotlin
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.TextView
-import projeto.android.primeiroappemkotlin.MainActivity.Companion.CHAVE_PRODUTO
+import androidx.appcompat.app.AppCompatActivity
 import projeto.android.primeiroappemkotlin.ROOM.AppDataBase
-import projeto.android.primeiroappemkotlin.databinding.ActivityFormBinding
+import projeto.android.primeiroappemkotlin.constante.CHAVE_PRODUTO_ID
 import projeto.android.primeiroappemkotlin.databinding.ActivityTelaDetalhesBinding
 import projeto.android.primeiroappemkotlin.recyclerView.Produt
 import projeto.android.primeiroappemkotlin.util.tentaCarregarImagem
 
-private const val TAG = "DetalhesProduto"
 
 class TelaDetalhes : AppCompatActivity() {
 
-    private val CHAVE_PRODUTO_ID: String? = "PRODUTO_ID"
+
     private var produtoId: Long = 0
     private var produto: Produt? = null
     private val binding by lazy {
@@ -63,7 +59,7 @@ class TelaDetalhes : AppCompatActivity() {
             R.id.editar -> {
                 Intent(this, Form::class.java)
                     .apply {
-                        putExtra(CHAVE_PRODUTO, produto)
+                        putExtra(CHAVE_PRODUTO_ID, produtoId)
                         startActivity(this)
                     }
             }

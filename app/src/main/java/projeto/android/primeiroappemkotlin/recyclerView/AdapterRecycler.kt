@@ -66,7 +66,7 @@ class AdapterRecycler(
 
         init {
             itemView.setOnClickListener {
-                //Log.i("ListaProdutosAdapter", "clicando no item")
+                Log.i("ListaProdutosAdapter", "clicando no item")
                 if(::produto.isInitialized) {
                     quandoClicaNoItemListener(produto)
                 }
