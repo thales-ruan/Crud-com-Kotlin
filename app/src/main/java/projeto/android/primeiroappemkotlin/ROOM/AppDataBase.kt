@@ -12,11 +12,11 @@ import projeto.android.primeiroappemkotlin.recyclerView.Produt
 @TypeConverters(Converter::class)
 abstract class AppDataBase : RoomDatabase() {
 
-    abstract fun produtoDao():ProdutoDao
+    abstract fun produtoDao(): ProdutoDao
 
     companion object {
-         fun instancia(context: Context): AppDataBase{
-             return Room.databaseBuilder(
+        fun instancia(context: Context): AppDataBase {
+            return Room.databaseBuilder(
                 context,
                 AppDataBase::class.java,
                 "orgs.db"

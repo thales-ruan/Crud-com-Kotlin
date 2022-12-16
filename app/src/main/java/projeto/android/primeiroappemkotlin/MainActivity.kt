@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.coroutines.*
 import projeto.android.primeiroappemkotlin.ROOM.AppDataBase
 import projeto.android.primeiroappemkotlin.constante.CHAVE_PRODUTO_ID
 import projeto.android.primeiroappemkotlin.recyclerView.AdapterRecycler
@@ -38,7 +39,16 @@ class MainActivity : AppCompatActivity() {
         val db = AppDataBase.instancia(this)
 
         val produtoDao = db.produtoDao()
-        adapter.atualiza(produtoDao.buscaTodos())
+
+        val scope = MainScope()
+        scope.launch {
+            val proutos = withContext(Dispatchers.IO){
+                produtoDao.buscaTodos()
+            }
+            adapter.atualiza(proutos)
+        }
+
+       // adapter.atualiza(produtoDao.buscaTodos())
 
     }
 
@@ -72,7 +82,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    companion object {
-//        const val CHAVE_PRODUTO = "produto"
-//    }
 }
